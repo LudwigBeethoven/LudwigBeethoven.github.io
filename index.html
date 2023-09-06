@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas RPG para Dólar</title>
+</head>
+<body>
+    <h1>Conversor de Moedas RPG para Dólar</h1>
+    <form>
+        <label for="conversao">Escolha a conversão:</label>
+        <select id="conversao">
+            <option value="moedaParaDolar">Moeda RPG para Dólar</option>
+            <option value="dolarParaMoeda">Dólar para Moeda RPG</option>
+        </select>
+        <br><br>
+        <label>Escolha a moeda de preferência:</label>
+        <input type="radio" id="zigus" name="moeda" value="zigus">
+        <label for="zigus">Zigus</label>
+        <input type="radio" id="lear" name="moeda" value="lear">
+        <label for="lear">Lear</label>
+        <input type="radio" id="atla" name="moeda" value="atla">
+        <label for="atla">Atla</label>
+        <input type="radio" id="borul" name="moeda" value="borul">
+        <label for="borul">Borul</label>
+        <input type="radio" id="kraken" name="moeda" value="kraken">
+        <label for="kraken">Kraken</label>
+        <input type="radio" id="lovincii" name="moeda" value="lovincii">
+        <label for="lovincii">Lovincii</label>
+        <br><br>
+        <label for="quantidade">Digite a quantidade:</label>
+        <input type="number" id="quantidade" step="0.01">
+        <br><br>
+        <button id="calcular">Calcular</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', function(event) {
+            event.preventDefault(); // Evitar que o formulário seja enviado
+
+            const selectConversao = document.getElementById('conversao');
+            const quantidade = parseFloat(document.getElementById('quantidade').value);
+            const resultadoElement = document.getElementById('resultado');
+            let resultado = 0;
+
+            const tabelaConversao = {
+                moedaParaDolar: {
+                    zigus: 6.25,
+                    lear: 0.125,
+                    atla: 0.03125,
+                    borul: 3.125,
+                    kraken: 0.625,
+                    lovincii: 0.25,
+                },
+                dolarParaMoeda: {
+                    zigus: 1 / 6.25,
+                    lear: 1 / 0.125,
+                    atla: 1 / 0.03125,
+                    borul: 1 / 3.125,
+                    kraken: 1 / 0.625,
+                    lovincii: 1 / 0.25,
+                },
+            };
+
+            const tipoConversao = selectConversao.value;
+            const moedaSelecionada = document.querySelector('input[name="moeda"]:checked');
+
+            if (moedaSelecionada) {
+                const moeda = moedaSelecionada.value;
+
+                if (tabelaConversao[tipoConversao][moeda]) {
+                    resultado = quantidade * tabelaConversao[tipoConversao][moeda];
+                    resultadoElement.textContent = `Resultado: $${resultado.toFixed(2)}`;
+                } else {
+                    resultadoElement.textContent = "Moeda não encontrada na tabela de conversão.";
+                }
+            } else {
+                resultadoElement.textContent = "Escolha uma moeda de preferência.";
+            }
+        });
+    </script>
+</body>
+</html>

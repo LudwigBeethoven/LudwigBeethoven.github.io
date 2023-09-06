@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +10,8 @@
     <form method="post">
         <select name="opCambio" id="op">
             <option>Selecione uma opção</option>
-            <option value="moedaRPG">Moeda RPG para dólar</option>
-            <option value="dolar">Dólar para moeda RPG</option>
+            <option value="moedaRPG">Moeda do RPG para dólar</option>
+            <option value="dolar">Dólar para moeda do RPG</option>
         </select>
 
         <div id="conteudo-dinamico">
@@ -28,7 +28,6 @@
     var divBase = document.getElementById('divBase'); // Adicione um ID a divBase
     var conteudo = '';
 
-    // Verifica se divBase já existe, se sim, remove
     if (divBase) {
         divBase.remove();
     }
@@ -76,6 +75,8 @@
         default:
             break;
         }
+
+        
 
     });
     </script>
