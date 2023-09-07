@@ -55,11 +55,11 @@
         <label for="quantidade">Digite o valor:</label>
         <input class="qtd" type="number" id="quantidade" step="0.01" placeholder="0,00">
         <button id="calcular">Calcular</button>
+        <p id="preencher"></p>
     </form>
-    <form>
-        <p><strong>Resultado</strong></p>
-        <p id="resultado" class="resultado"></p>
-    </form>
+    <div id="result">
+        <span></span>
+    </div>
 
     <script>
         document.getElementById('calcular').addEventListener('click', function (event) {
@@ -67,7 +67,27 @@
 
             const selectConversao = document.getElementById('conversao');
             const quantidade = parseFloat(document.getElementById('quantidade').value);
-            const resultadoElement = document.getElementById('resultado');
+            const result = document.getElementById('result');
+            const error = document.getElementById('preencher');
+
+            if (isNaN(quantidade)) {
+                error.textContent = 'Preencha todos os campos!'
+                error.style.color = 'red';
+                return;
+            } else {
+                error.textContent = ''
+            }
+
+            result.innerHTML = '';
+
+            const mostrarResult = document.createElement('form');
+            mostrarResult.id = 'mostrarResult';
+            const resultadoConver = document.createElement('p');
+            resultadoConver.id = 'resultado';
+
+            result.appendChild(mostrarResult);
+            mostrarResult.appendChild(resultadoConver);
+
             let resultado = 0;
 
             const tabelaConversao = {
@@ -101,35 +121,39 @@
                     if (tipoConversao === "dolarParaMoeda") {
                         switch (moeda) {
                             case "zigus":
-                                resultadoElement.innerHTML = `<span class="coin-font">Σ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">Σ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             case "lear":
-                                resultadoElement.innerHTML = `<span class="coin-font">Ξ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">Ξ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             case "atla":
-                                resultadoElement.innerHTML = `<span class="coin-font">Δ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">Δ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             case "borul":
-                                resultadoElement.innerHTML = `<span class="coin-font">Π</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">Π</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             case "kraken":
-                                resultadoElement.innerHTML = `<span class="coin-font">@</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">@</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             case "lonvicii":
-                                resultadoElement.innerHTML = `<span class="coin-font">#</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                resultadoConver.innerHTML = `<span class="coin-font-result">#</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                                 break;
                             default:
-                                resultadoElement.textContent = "Moeda não encontrada na tabela de conversão.";
+                                resultadoConver.textContent = "Moeda não encontrada na tabela de conversão.";
                         }
 
                     } else {
-                        resultadoElement.textContent = `$${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                        resultadoConver.textContent = `$${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                     }
                 } else {
-                    resultadoElement.textContent = "Moeda não encontrada na tabela de conversão.";
+                    error.textContent = "Moeda não encontrada na tabela de conversão.";
+                    error.style.color = 'red';
+                    result.innerHTML = '';
                 }
             } else {
-                resultadoElement.textContent = "Escolha uma moeda de preferência.";
+                error.textContent = "Escolha uma moeda de preferência.";
+                error.style.color = 'red';
+                result.innerHTML = '';
             }
         });
     </script>
