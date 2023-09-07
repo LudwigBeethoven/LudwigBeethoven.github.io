@@ -8,7 +8,7 @@ input[type="radio"]+label {
     position: relative;
     padding-left: 30px;
     cursor: pointer;
-    margin-bottom: 7%;
+    margin-bottom: 2%;
 }
 
 input[type="radio"]+label::before {
@@ -17,7 +17,7 @@ input[type="radio"]+label::before {
     left: 10px;
     top: 0;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     border: 2px solid #333;
     background-color: #ffffff00;
     border-radius: 10px;
