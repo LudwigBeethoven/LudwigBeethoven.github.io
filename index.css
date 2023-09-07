@@ -28,6 +28,7 @@ header {
 
 h1 {
     color: #ffffff;
+    padding-top: 3px;
 }
 
 form {
@@ -74,6 +75,9 @@ label {
     margin-right: 10px;
     padding: 5px;
     border-radius: 5px;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    text-align: center;
 }
 
 .qtd {
