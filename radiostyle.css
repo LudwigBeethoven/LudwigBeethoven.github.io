@@ -1,4 +1,4 @@
-main{
+main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -6,15 +6,17 @@ main{
 
 input[type="radio"]+label {
     position: relative;
-    padding-left: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     cursor: pointer;
     margin-bottom: 2%;
+    user-select: none;
 }
 
 input[type="radio"]+label::before {
     content: "";
     position: absolute;
-    left: 10px;
+    left: -2px;
     top: 0;
     width: 100%;
     height: 4rem;
@@ -25,11 +27,22 @@ input[type="radio"]+label::before {
 }
 
 input[type="radio"]:checked+label::before {
-    border: 3px solid #009b15;
-    background-color: #007bff00;
+    border: 4px solid #009b15;
+    background-color: #ffffff00;
 }
 
 label {
     position: relative;
+}
+
+#ziguslabel,
+#learlabel,
+#borullabel,
+#krakenlabel,
+#atlalabel,
+#lonviciilabel {
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
