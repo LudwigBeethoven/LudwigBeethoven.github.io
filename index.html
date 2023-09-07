@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Moedas RPG para Dólar</title>
+    <title>Conversor de Moedas RPG</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="radiostyle.css">
+    <link rel="icon" href="imgs/coins.png">
 </head>
+
 <body>
-    <h1>Conversor de Moedas RPG para Dólar</h1>
+    <header>
+        <h1>Conversor de Moedas RPG</h1>
+        <!-- Adicionar um menu aqui futuramente -->
+    </header>
     <form>
         <label for="conversao">Escolha a conversão:</label>
-        <select id="conversao">
+        <select id="conversao" class="conversao">
             <option value="moedaParaDolar">Moeda RPG para Dólar</option>
             <option value="dolarParaMoeda">Dólar para Moeda RPG</option>
         </select>
+
         <br><br>
         <label>Escolha a moeda de preferência:</label>
-        <input type="radio" id="zigus" name="moeda" value="zigus">
-        <label for="zigus">Zigus</label>
-        <input type="radio" id="lear" name="moeda" value="lear">
-        <label for="lear">Lear</label>
-        <input type="radio" id="atla" name="moeda" value="atla">
-        <label for="atla">Atla</label>
-        <input type="radio" id="borul" name="moeda" value="borul">
-        <label for="borul">Borul</label>
-        <input type="radio" id="kraken" name="moeda" value="kraken">
-        <label for="kraken">Kraken</label>
-        <input type="radio" id="lovincii" name="moeda" value="lovincii">
-        <label for="lovincii">Lovincii</label>
+        <br><br>
+
+        <main>
+            <!-- Zigus -->
+            <input type="radio" id="zigus" name="moeda" value="zigus">
+            <label for="zigus"><span class="coin-font">Σ</span> <br>Zigus</label>
+
+            <!-- Lear -->
+            <input type="radio" id="lear" name="moeda" value="lear">
+            <label for="lear"><span class="coin-font">Ξ</span><br>Lear</label>
+
+            <!-- Atla -->
+            <input type="radio" id="atla" name="moeda" value="atla">
+            <label for="atla"><span class="coin-font">Δ</span><br>Atla</label>
+
+            <!-- Borul -->
+            <input type="radio" id="borul" name="moeda" value="borul">
+            <label for="borul"><span class="coin-font">Π</span><br>Borul</label>
+
+            <!-- Kraken -->
+            <input type="radio" id="kraken" name="moeda" value="kraken">
+            <label for="kraken"><span class="coin-font">@</span><br>Kraken</label>
+
+            <!-- Lonvicii -->
+            <input type="radio" id="lonvicii" name="moeda" value="lonvicii">
+            <label for="lonvicii"><span class="coin-font">#</span><br>Lonvicii</label>
+        </main>
+
         <br><br>
         <label for="quantidade">Digite a quantidade:</label>
-        <input type="number" id="quantidade" step="0.01">
+        <input class="qtd" type="number" id="quantidade" step="0.01" placeholder="0,00">
         <br><br>
         <button id="calcular">Calcular</button>
     </form>
-    <p id="resultado"></p>
+    <form>
+        <p><strong>Resultado</strong></p>
+        <p id="resultado" class="resultado"></p>
+    </form>
 
     <script>
-        document.getElementById('calcular').addEventListener('click', function(event) {
+        document.getElementById('calcular').addEventListener('click', function (event) {
             event.preventDefault(); // Evitar que o formulário seja enviado
 
             const selectConversao = document.getElementById('conversao');
@@ -52,7 +80,7 @@
                     atla: 0.03125,
                     borul: 3.125,
                     kraken: 0.625,
-                    lovincii: 0.25,
+                    lonvicii: 0.25,
                 },
                 dolarParaMoeda: {
                     zigus: 1 / 6.25,
@@ -60,7 +88,7 @@
                     atla: 1 / 0.03125,
                     borul: 1 / 3.125,
                     kraken: 1 / 0.625,
-                    lovincii: 1 / 0.25,
+                    lonvicii: 1 / 0.25,
                 },
             };
 
@@ -72,7 +100,34 @@
 
                 if (tabelaConversao[tipoConversao][moeda]) {
                     resultado = quantidade * tabelaConversao[tipoConversao][moeda];
-                    resultadoElement.textContent = `Resultado: $${resultado.toFixed(2)}`;
+
+                    if (tipoConversao === "dolarParaMoeda") {
+                        switch (moeda) {
+                            case "zigus":
+                                resultadoElement.innerHTML = `<span class="coin-font">Σ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            case "lear":
+                                resultadoElement.innerHTML = `<span class="coin-font">Ξ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            case "atla":
+                                resultadoElement.innerHTML = `<span class="coin-font">Δ</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            case "borul":
+                                resultadoElement.innerHTML = `<span class="coin-font">Π</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            case "kraken":
+                                resultadoElement.innerHTML = `<span class="coin-font">@</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            case "lonvicii":
+                                resultadoElement.innerHTML = `<span class="coin-font">#</span>${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                break;
+                            default:
+                                resultadoElement.textContent = "Moeda não encontrada na tabela de conversão.";
+                        }
+
+                    } else {
+                        resultadoElement.textContent = `$${resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                    }
                 } else {
                     resultadoElement.textContent = "Moeda não encontrada na tabela de conversão.";
                 }
@@ -82,4 +137,5 @@
         });
     </script>
 </body>
+
 </html>
