@@ -1,0 +1,141 @@
+/* link pros dois ai embaixo */
+/* <link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="radiostyle.css"> */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EADBC8;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #102C57;
+    padding: 15px;
+}
+
+@font-face {
+    font-family: 'CoinFont';
+    src: url('font/Coinsrpg-Regular.otf') format('opentype'),
+        url('font/Coinsrpg-Regular.ttf') format('opentype');
+}
+
+.coin-font {
+    font-family: 'CoinFont', sans-serif;
+    font-size: 55px;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+#calcular {
+    background-color: #102C57;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#resultado {
+    font-size: 30px;
+    margin-top: 20px;
+    width: 80%;
+    background-color: #102C57;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+
+.resultado {
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.qtd {
+    text-align: center;
+}
+
+#zigus {
+    background-color: #B85C38;
+    color: #fff;
+}
+
+#lear {
+    background-color: #5C3D2E;
+    color: #fff;
+}
+
+#atla {
+    background-color: #5C3D2E;
+    color: #fff;
+}
+
+#borul {
+    background-color: #5C3D2E;
+    color: #333;
+}
+
+#kraken {
+    background-color: #5C3D2E;
+    color: #fff;
+}
+
+#lonvicii {
+    background-color: #5C3D2E;
+    color: #fff;
+}
+
+input[type="radio"] {
+    vertical-align: middle;
+    text-align: center;
+    display: none;
+}
+
+#quantidade {
+    width: 25%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    font-size: 25px;
+}
+
+#conversao {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+}

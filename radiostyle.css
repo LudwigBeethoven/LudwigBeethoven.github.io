@@ -1,0 +1,26 @@
+input[type="radio"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+input[type="radio"]+label::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    border: 2px solid #333;
+    background-color: #ffffff00;
+    border-radius: 10px;
+}
+
+input[type="radio"]:checked+label::before {
+    border-color: #009b15;
+    background-color: #007bff00;
+}
+
+label {
+    position: relative;
+}
